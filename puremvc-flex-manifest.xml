@@ -5,16 +5,16 @@
 -->
 <componentPackage>
 	<!-- Core Components -->
-	<component id="Controller" class="org.puremvc.core.controller.Controller"/>
-	<component id="Model" class="org.puremvc.core.model.Model"/>
-	<component id="View" class="org.puremvc.core.view.View"/>
+	<component id="Controller" class="org.puremvc.as3.core.controller.Controller"/>
+	<component id="Model" class="org.puremvc.as3.core.model.Model"/>
+	<component id="View" class="org.puremvc.as3.core.view.View"/>
 	<!-- Pattern Components -->
-	<component id="Notifier" class="org.puremvc.patterns.observer.Notifier"/>
-	<component id="Facade" class="org.puremvc.patterns.facade.Facade"/>
-	<component id="Observer" class="org.puremvc.patterns.observer.Observer"/>
-	<component id="Notification" class="org.puremvc.patterns.observer.Notification"/>
-	<component id="Mediator" class="org.puremvc.patterns.mediator.Mediator"/>
-	<component id="Proxy" class="org.puremvc.patterns.proxy.Proxy"/>
-	<component id="SimpleCommand" class="org.puremvc.patterns.command.SimpleCommand"/>
-	<component id="MacroCommand" class="org.puremvc.patterns.command.MacroCommand"/>
+	<component id="Notifier" class="org.puremvc.as3.patterns.observer.Notifier"/>
+	<component id="Facade" class="org.puremvc.as3.patterns.facade.Facade"/>
+	<component id="Observer" class="org.puremvc.as3.patterns.observer.Observer"/>
+	<component id="Notification" class="org.puremvc.as3.patterns.observer.Notification"/>
+	<component id="Mediator" class="org.puremvc.as3.patterns.mediator.Mediator"/>
+	<component id="Proxy" class="org.puremvc.as3.patterns.proxy.Proxy"/>
+	<component id="SimpleCommand" class="org.puremvc.as3.patterns.command.SimpleCommand"/>
+	<component id="MacroCommand" class="org.puremvc.as3.patterns.command.MacroCommand"/>
 </componentPackage>
