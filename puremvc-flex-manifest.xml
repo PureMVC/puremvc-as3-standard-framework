@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- 
+ PureMVC - Copyright(c) 2006-2008 Futurescale, Inc., Some rights reserved.
+ Your reuse is governed by the Creative Commons Attribution 3.0 United States License
+-->
+<componentPackage>
+	<!-- Core Components -->
+	<component id="Controller" class="org.puremvc.core.controller.Controller"/>
+	<component id="Model" class="org.puremvc.core.model.Model"/>
+	<component id="View" class="org.puremvc.core.view.View"/>
+	<!-- Pattern Components -->
+	<component id="Notifier" class="org.puremvc.patterns.observer.Notifier"/>
+	<component id="Facade" class="org.puremvc.patterns.facade.Facade"/>
+	<component id="Observer" class="org.puremvc.patterns.observer.Observer"/>
+	<component id="Notification" class="org.puremvc.patterns.observer.Notification"/>
+	<component id="Mediator" class="org.puremvc.patterns.mediator.Mediator"/>
+	<component id="Proxy" class="org.puremvc.patterns.proxy.Proxy"/>
+	<component id="SimpleCommand" class="org.puremvc.patterns.command.SimpleCommand"/>
+	<component id="MacroCommand" class="org.puremvc.patterns.command.MacroCommand"/>
+</componentPackage>
