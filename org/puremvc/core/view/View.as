@@ -167,23 +167,40 @@ package org.puremvc.core.view
 		 */
 		public function removeMediator( mediatorName:String ) : void
 		{
-			// Remove all Observers with a reference to this Mediator			
-			// also, when an notification's observer list length falls to 
-			// zero, remove it.
+			// Go through the observer list for each notification 
+			// in the observer map and remove all Observers with a 
+			// reference to the Mediator being removed.
 			for ( var notificationName:String in observerMap ) {
+				// the observer list for the notification under inspection
 				var observers:Array = observerMap[ notificationName ];
+				// First, collect the indices of the observers to be removed 
+				var removalTargets:Array = new Array();
 				for ( var i:int=0;  i< observers.length; i++ ) {
 					if ( Observer(observers[i]).compareNotifyContext( retrieveMediator( mediatorName ) ) == true ) {
-						observers.splice(i,1);
-						if ( observers.length == 0 ) {
-							delete observerMap[ notificationName ];								
-							break;
-						}
-						
+						removalTargets.push(i);
 					}
 				}
+				// now the removalTargets array has an ascending 
+				// list of indices to be removed from the observers array
+				// so pop them off the array, effectively going from 
+				// highest index value to lowest, and splice each
+				// from the observers array. since we're going backwards,
+				// the collapsing of the array elements to fill the spliced
+				// out element's space does not affect the position of the
+				// lower numbered indices we've yet to remove
+				var target:int;
+				while ( removalTargets.length > 0 ) 
+				{
+					target = removalTargets.pop();
+					observers.splice(target,1);
+				}
+				// Also, when an notification's observer list length falls to 
+				// zero, delete the notification key from the observer map
+				if ( observers.length == 0 ) {
+					delete observerMap[ notificationName ];		
+				}
 			}			
-			// Remove the reference to the Mediator itself
+			// Remove the to the Mediator from the mediator map
 			delete mediatorMap[ mediatorName ];
 		}
 						

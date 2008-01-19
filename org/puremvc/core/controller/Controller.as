@@ -124,13 +124,18 @@ package org.puremvc.core.controller
 		 * handle <code>INotification</code>s with this name, it is no longer
 		 * used, the new <code>ICommand</code> is used instead.</P>
 		 * 
+		 * The Observer for the new ICommand is only created if this the 
+		 * first time an ICommand has been regisered for this Notification name.
+		 * 
 		 * @param notificationName the name of the <code>INotification</code>
 		 * @param commandClassRef the <code>Class</code> of the <code>ICommand</code>
 		 */
 		public function registerCommand( notificationName : String, commandClassRef : Class ) : void
 		{
+			if ( commandMap[ notificationName ] == null ) {
+				view.registerObserver( notificationName, new Observer( executeCommand, this ) );
+			}
 			commandMap[ notificationName ] = commandClassRef;
-			view.registerObserver( notificationName, new Observer( executeCommand, this ) );
 		}
 		
 		/**

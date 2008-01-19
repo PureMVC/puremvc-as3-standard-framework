@@ -27,6 +27,13 @@ package org.puremvc.interfaces
 	public interface IFacade
 	{
 		/**
+		 * Notify <code>Observer</code>s of an <code>INotification</code>.
+		 * 
+		 * @param note the <code>INotification</code> to have the <code>View</code> notify observers of.
+		 */
+		function notifyObservers( note:INotification ) : void;
+
+		/**
 		 * Register an <code>IProxy</code> with the <code>Model</code> by name.
 		 * 
 		 * @param proxy the <code>IProxy</code> to be registered with the <code>Model</code>.
@@ -54,14 +61,15 @@ package org.puremvc.interfaces
 		 * @param noteName the name of the <code>INotification</code> to associate the <code>ICommand</code> with.
 		 * @param commandClassRef a reference to the <code>Class</code> of the <code>ICommand</code>.
 		 */
-		function registerCommand( noteName : String, commandClassRef : Class ) : void
+		function registerCommand( noteName : String, commandClassRef : Class ) : void;
 		
 		/**
-		 * Notify <code>Observer</code>s of an <code>INotification</code>.
+		 * Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping from the Controller.
 		 * 
-		 * @param note the <code>INotification</code> to have the <code>View</code> notify observers of.
+		 * @param notificationName the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for
 		 */
-		function notifyObservers( note:INotification ) : void;
+		function removeCommand( notificationName:String ): void;
+
 		
 		/**
 		 * Register an <code>IMediator</code> instance with the <code>View</code>.

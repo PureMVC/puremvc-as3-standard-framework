@@ -269,6 +269,15 @@ package org.puremvc.patterns.facade
 		}
 
 		/**
+		 * Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping from the Controller.
+		 * 
+		 * @param notificationName the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for
+		 */
+		public function removeCommand( notificationName:String ):void {
+			controller.removeCommand( notificationName );
+		}
+
+		/**
 		 * Register an <code>IProxy</code> with the <code>Model</code> by name.
 		 * 
 		 * @param proxyName the name of the <code>IProxy</code>.
@@ -337,7 +346,5 @@ package org.puremvc.patterns.facade
 		// Message Constants
 		protected const SINGLETON_MSG	: String = "Facade Singleton already constructed!";
 
-				
-		
 	}
 }
