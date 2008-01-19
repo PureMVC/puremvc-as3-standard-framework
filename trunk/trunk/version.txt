@@ -1,0 +1,65 @@
+PureMVC - Copyright(c) 2006-2008 Futurescale, Inc., Some rights reserved.
+--------------------------------------------------------------------------
+Release Date: 01/04/07
+    Platform: ActionScript 3 (Flash, Flex, AIR)
+     Version: 1 
+    Revision: 7.1    
+      Author: Cliff Hall <clifford.hall@puremvc.org>
+     License: Creative Commons Attribution 3.0 United States License
+--------------------------------------------------------------------------
+1.7.1 A unneeded break statement was in the view's removeMediator method after the
+      refactor for 1.7. This bug was not flushed out because of a flaw in the test
+      which has been corrected. Here is the associated forum post:
+      http://forums.puremvc.org/index.php?topic=181.msg579#msg579
+
+1.7   The Controller's registerCommand method was modified to only create the corresponding
+      Observer for the ICommand being registered if no previous ICommand was registered
+      to the Notification name in question. The behavior of the method is the same in that
+      if an ICommand was previously registered for the Notification, it is no longer used
+      and the newly registered ICommand is. However, the previous implementation created
+      and registered an extra Observer, which could lead to the new ICommand being executed
+      twice. Added removeCommand method to the Facade, which is passed through to the 
+      Controller. Being such a little-used method its omission was intentional, but it is 
+      included now as a matter of form. Added to the removeCommand to the IFacade interface 
+      as well. An issue with the View's removeMediator method was fixed. The previous
+      implementation iterated through the observer list, removing associated Observers,
+      however this caused the length of the Observer list to change, leading to the 
+      possibility that some Observers would not be removed when they should have been. The
+      issue is discussed here: http://forums.puremvc.org/index.php?topic=145.msg478#msg478
+      
+1.6   The 1.5 removeMediator implementation created a new situation where after an 
+      observerMap array was nulled due to its length falling to zero. subsequent calls 
+      to removeMediator could throw an exception. This was because the method of removing
+      the only reference to the array was setting the observerMap value to null for the
+      observerMap key in question. This method was used since Adobe's 'Programming 
+      ActionScript 3.0  > Core ActionScript 3.0 Data Types and Classes > Working with 
+      Arrays' says: "You may come across code that uses the delete operator on an array 
+      element. The delete operator sets the value of an array element to undefined, but 
+      it does not remove the element from the array". However, this proves to no longer
+      be the case. So now, the delete operator is used to remove both observerMap and 
+      mediatorMap entries.
+      
+1.5   Amended removeMediator method to remove associated Observer references from
+      the observerMap. When a notificationName's observer list length falls to zero
+      the reference to the observer list is also removed. Added compareNotifyContext
+      method to the Observer class and IObserver interface, which compares a given 
+      object to the Observer's notification context and returns a Boolean indicating
+      their equality. This allows the View to  compare the Mediator being removed with 
+      the Observer's notification context without breaking the Observer's encapsulation.
+
+1.4   Added INotifier interface and Notifier class. MacroCommand, Command, Mediator
+      and Proxy all extend Notifier and implement INotifier. The sendNotification
+      method in Proxy and Mediator was moved to Notifier and is now available to
+      Commands. Also the protected facade property was moved from Proxy and Mediator
+      into Notifier, so Commands now get the facade reference at construction time.
+      
+1.3  Obviated the need for AbstractProxy and AbstractMediator in applications:
+     * Implemented sendNotification convenience method in Proxy and Mediator
+     * Added protected facade:Ifacade property initialized to Facade.getInstance()
+       on both Mediator and Proxy. The concrete Facade must be instantiated 
+       first, but this call will return the concrete instance, even though the
+       framework Facade.getInstance is called. 
+           
+1.2 - Removed old files that were inadvertently included.
+
+1.1 - Repackaged zip and updated inline docs      
