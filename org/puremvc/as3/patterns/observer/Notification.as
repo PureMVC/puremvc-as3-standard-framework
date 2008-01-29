@@ -112,8 +112,8 @@ package org.puremvc.as3.patterns.observer
 		public function toString():String
 		{
 			var msg:String = "Notification Name: "+getName();
-			msg += "\nBody:"+( body == null )?"null":body.toString();
-			msg += "\nType:"+( type == null )?"null":type;
+			msg += "\nBody:"+(( body == null )?"null":body.toString());
+			msg += "\nType:"+(( type == null )?"null":type);
 			return msg;
 		}
 		
