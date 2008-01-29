@@ -49,7 +49,15 @@ package org.puremvc.as3.interfaces
 		 * @return the <code>IProxy</code> that was removed from the <code>Model</code>
 		 */
 		function removeProxy( proxyName:String ) : IProxy;
-		
+
+		/**
+		 * Check if a Proxy is registered
+		 * 
+		 * @param proxyName
+		 * @return whether a Proxy is currently registered with the given <code>proxyName</code>.
+		 */
+		function hasProxy( proxyName:String ) : Boolean;
+
 		/**
 		 * Register an <code>ICommand</code> with the <code>Controller</code>.
 		 * 
@@ -65,6 +73,13 @@ package org.puremvc.as3.interfaces
 		 */
 		function removeCommand( notificationName:String ): void;
 
+		/**
+		 * Check if a Command is registered for a given Notification 
+		 * 
+		 * @param notificationName
+		 * @return whether a Command is currently registered for the given <code>notificationName</code>.
+		 */
+		function hasCommand( notificationName:String ) : Boolean;
 		
 		/**
 		 * Register an <code>IMediator</code> instance with the <code>View</code>.
@@ -88,6 +103,14 @@ package org.puremvc.as3.interfaces
 		 * @return the <code>IMediator</code> instance previously registered with the given <code>mediatorName</code>.
 		 */
 		function removeMediator( mediatorName:String ) : IMediator;
+		
+		/**
+		 * Check if a Mediator is registered or not
+		 * 
+		 * @param mediatorName
+		 * @return whether a Mediator is registered with the given <code>mediatorName</code>.
+		 */
+		function hasMediator( mediatorName:String ) : Boolean;
 
 	}
 }

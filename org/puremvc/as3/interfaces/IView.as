@@ -84,6 +84,13 @@ package org.puremvc.as3.interfaces
 		 */
 		function removeMediator( mediatorName:String ) : IMediator;
 		
+		/**
+		 * Check if a Mediator is registered or not
+		 * 
+		 * @param mediatorName
+		 * @return whether a Mediator is registered with the given <code>mediatorName</code>.
+		 */
+		function hasMediator( mediatorName:String ) : Boolean;
 		
 	}
 	

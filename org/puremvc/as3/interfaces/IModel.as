@@ -44,6 +44,14 @@ package org.puremvc.as3.interfaces
 		 * @return the <code>IProxy</code> that was removed from the <code>Model</code>
 		 */
 		function removeProxy( proxyName:String ) : IProxy;
-		
+
+		/**
+		 * Check if a Proxy is registered
+		 * 
+		 * @param proxyName
+		 * @return whether a Proxy is currently registered with the given <code>proxyName</code>.
+		 */
+		function hasProxy( proxyName:String ) : Boolean;
+
 	}
 }

@@ -207,6 +207,17 @@ package org.puremvc.as3.core.view
 			return mediator;
 		}
 						
+		/**
+		 * Check if a Mediator is registered or not
+		 * 
+		 * @param mediatorName
+		 * @return whether a Mediator is registered with the given <code>mediatorName</code>.
+		 */
+		public function hasMediator( mediatorName:String ) : Boolean
+		{
+			return mediatorMap[ mediatorName ] != null;
+		}
+
 		// Mapping of Mediator names to Mediator instances
 		protected var mediatorMap : Array;
 

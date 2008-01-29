@@ -103,6 +103,17 @@ package org.puremvc.as3.core.model
 		}
 
 		/**
+		 * Check if a Proxy is registered
+		 * 
+		 * @param proxyName
+		 * @return whether a Proxy is currently registered with the given <code>proxyName</code>.
+		 */
+		public function hasProxy( proxyName:String ) : Boolean
+		{
+			return proxyMap[ proxyName ] != null;
+		}
+
+		/**
 		 * Remove an <code>IProxy</code> from the <code>Model</code>.
 		 * 
 		 * @param proxyName name of the <code>IProxy</code> instance to be removed.

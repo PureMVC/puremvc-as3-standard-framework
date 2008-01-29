@@ -272,6 +272,17 @@ package org.puremvc.as3.patterns.facade
 		}
 
 		/**
+		 * Check if a Command is registered for a given Notification 
+		 * 
+		 * @param notificationName
+		 * @return whether a Command is currently registered for the given <code>notificationName</code>.
+		 */
+		public function hasCommand( notificationName:String ) : Boolean
+		{
+			return controller.hasCommand(notificationName);
+		}
+
+		/**
 		 * Register an <code>IProxy</code> with the <code>Model</code> by name.
 		 * 
 		 * @param proxyName the name of the <code>IProxy</code>.
@@ -307,6 +318,17 @@ package org.puremvc.as3.patterns.facade
 		}
 
 		/**
+		 * Check if a Proxy is registered
+		 * 
+		 * @param proxyName
+		 * @return whether a Proxy is currently registered with the given <code>proxyName</code>.
+		 */
+		public function hasProxy( proxyName:String ) : Boolean
+		{
+			return model.hasProxy( proxyName );
+		}
+
+		/**
 		 * Register a <code>IMediator</code> with the <code>View</code>.
 		 * 
 		 * @param mediatorName the name to associate with this <code>IMediator</code>
@@ -339,6 +361,17 @@ package org.puremvc.as3.patterns.facade
 			var mediator:IMediator;
 			if ( view != null ) mediator = view.removeMediator( mediatorName );			
 			return mediator;
+		}
+
+		/**
+		 * Check if a Mediator is registered or not
+		 * 
+		 * @param mediatorName
+		 * @return whether a Mediator is registered with the given <code>mediatorName</code>.
+		 */
+		public function hasMediator( mediatorName:String ) : Boolean
+		{
+			return view.hasMediator( mediatorName );
 		}
 
 		/**

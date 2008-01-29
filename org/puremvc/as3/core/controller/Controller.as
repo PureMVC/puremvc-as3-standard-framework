@@ -139,6 +139,17 @@ package org.puremvc.as3.core.controller
 		}
 		
 		/**
+		 * Check if a Command is registered for a given Notification 
+		 * 
+		 * @param notificationName
+		 * @return whether a Command is currently registered for the given <code>notificationName</code>.
+		 */
+		public function hasCommand( notificationName:String ) : Boolean
+		{
+			return commandMap[ notificationName ] != null;
+		}
+
+		/**
 		 * Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping.
 		 * 
 		 * @param notificationName the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for
