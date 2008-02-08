@@ -32,7 +32,7 @@ package org.puremvc.as3.patterns.observer
 	 * @see org.puremvc.as3.patterns.command.SimpleCommand SimpleCommand
 	 * @see org.puremvc.as3.patterns.command.MacroCommand MacroCommand
 	 */
-	public class Notifier
+	public class Notifier implements INotifier
 	{
 		/**
 		 * Create and send an <code>INotification</code>.
