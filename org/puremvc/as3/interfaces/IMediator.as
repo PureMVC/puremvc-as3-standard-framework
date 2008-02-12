@@ -13,7 +13,8 @@ package org.puremvc.as3.interfaces
 	 * <UL>
 	 * <LI>Implement a common method which returns a list of all <code>INotification</code>s 
 	 * the <code>IMediator</code> has interest in.</LI>
-	 * <LI>Implement a common notification (callback) method.</LI>
+	 * <LI>Implement a notification callback method.</LI>
+	 * <LI>Implement methods that are called when the IMediator is registered or removed from the View.</LI>
 	 * </UL>
 	 * <P>
 	 * Additionally, <code>IMediator</code>s typically:
@@ -60,12 +61,12 @@ package org.puremvc.as3.interfaces
 	 * 			combo.addEventListener( Event.CHANGE, onChange );
 	 * 		}
 	 * 		
-	 * 		public function listNotificationInterests():Array {
+	 * 		override public function listNotificationInterests():Array {
 	 * 				return [ MyFacade.SET_SELECTION, 
 	 * 						 MyFacade.SET_DATAPROVIDER ];
 	 * 		}
 	 * 
-	 * 		public function handleNotification( notification:INotification ):void {
+	 * 		override public function handleNotification( notification:INotification ):void {
 	 * 				switch ( notification.getName() ) {
 	 * 					case MyFacade.SET_SELECTION:
 	 * 						setSelection(notification);
@@ -77,18 +78,18 @@ package org.puremvc.as3.interfaces
 	 * 		}
 	 * 
 	 * 		// Set the data provider of the combo box
-	 * 		private function setDataProvider( notification:INotification ):void {
+	 * 		protected function setDataProvider( notification:INotification ):void {
 	 * 			combo.dataProvider = notification.getBody() as Array;
 	 * 		}
 	 * 
 	 * 		// Invoked when the combo box dispatches a change event, we send a
 	 *      // notification with the
-	 * 		private function onChange(event:ListEvent):void {
+	 * 		protected function onChange(event:ListEvent):void {
 	 * 			sendNotification( MyFacade.MYCOMBO_CHANGED, this );
 	 * 		}
 	 * 
 	 * 		// A private getter for accessing the view object by class
-	 *      private function get combo():ComboBox  {
+	 *      protected function get combo():ComboBox  {
 	 *         return view as ComboBox;
 	 *      }
 	 * 
