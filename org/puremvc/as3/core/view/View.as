@@ -16,6 +16,7 @@ package org.puremvc.as3.core.view
 	 * <UL>
 	 * <LI>Maintain a cache of <code>IMediator</code> instances.</LI>
 	 * <LI>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</LI>
+	 * <LI>Notifiying <code>IMediators</code> when they are registered or removed.</LI>
 	 * <LI>Managing the observer lists for each <code>INotification</code> in the application.</LI>
 	 * <LI>Providing a method for attaching <code>IObservers</code> to an <code>INotification</code>'s observer list.</LI>
 	 * <LI>Providing a method for broadcasting an <code>INotification</code>.</LI>
@@ -138,15 +139,22 @@ package org.puremvc.as3.core.view
 			
 			// Get Notification interests, if any.
 			var interests:Array = mediator.listNotificationInterests();
-			if ( interests.length == 0) return;
+
+			// Register Mediator as an observer for each notification of interests
+			if ( interests.length > 0) 
+			{
+				// Create Observer referencing this mediator's handlNotification method
+				var observer:Observer = new Observer( mediator.handleNotification, mediator );
+
+				// Register Mediator as Observer for its list of Notification interests
+				for ( var i:Number=0;  i<interests.length; i++ ) {
+					registerObserver( interests[i],  observer );
+				}			
+			}
 			
-			// Create Observer
-			var observer:Observer = new Observer( mediator.handleNotification, mediator );
+			// alert the mediator that it has been registered
+			mediator.onRegister();
 			
-			// Register Mediator as Observer for its list of Notification interests
-			for ( var i:Number=0;  i<interests.length; i++ ) {
-				registerObserver( interests[i],  observer );
-			}			
 		}
 
 		/**
@@ -204,6 +212,9 @@ package org.puremvc.as3.core.view
 			// Remove the to the Mediator from the mediator map and return it
 			var mediator:IMediator = mediatorMap[ mediatorName ] as IMediator;
 			delete mediatorMap[ mediatorName ];
+
+			// alert the mediator that it has been removed
+			if (mediator) mediator.onRemove();
 			return mediator;
 		}
 						

@@ -135,5 +135,15 @@ package org.puremvc.as3.interfaces
 		 */
 		function handleNotification( notification:INotification ):void;
 		
+		/**
+		 * Called by the View when the Mediator is registered
+		 */ 
+		function onRegister( ):void;
+
+		/**
+		 * Called by the View when the Mediator is removed
+		 */ 
+		function onRemove( ):void;
+		
 	}
 }

@@ -96,6 +96,16 @@ package org.puremvc.as3.patterns.mediator
 		 */ 
 		public function handleNotification( notification:INotification ):void {}
 		
+		/**
+		 * Called by the View when the Mediator is registered
+		 */ 
+		public function onRegister( ):void {}
+
+		/**
+		 * Called by the View when the Mediator is removed
+		 */ 
+		public function onRemove( ):void {}
+
 		// the mediator name
 		protected var mediatorName:String;
 
