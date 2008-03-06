@@ -67,6 +67,17 @@ package org.puremvc.as3.patterns.proxy
 		{
 			return data;
 		}		
+
+		/**
+		 * Called by the Model when the Proxy is registered
+		 */ 
+		public function onRegister( ):void {}
+
+		/**
+		 * Called by the Model when the Proxy is removed
+		 */ 
+		public function onRemove( ):void {}
+		
 		
 		// the proxy name
 		protected var proxyName:String;

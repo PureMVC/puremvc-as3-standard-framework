@@ -5,9 +5,9 @@
 -->
 <componentPackage>
 	<!-- Core Components -->
-	<component id="Controller" class="org.puremvc.as3.core.controller.Controller"/>
-	<component id="Model" class="org.puremvc.as3.core.model.Model"/>
-	<component id="View" class="org.puremvc.as3.core.view.View"/>
+	<component id="Controller" class="org.puremvc.as3.core.Controller"/>
+	<component id="Model" class="org.puremvc.as3.core.Model"/>
+	<component id="View" class="org.puremvc.as3.core.View"/>
 	<!-- Pattern Components -->
 	<component id="Notifier" class="org.puremvc.as3.patterns.observer.Notifier"/>
 	<component id="Facade" class="org.puremvc.as3.patterns.facade.Facade"/>

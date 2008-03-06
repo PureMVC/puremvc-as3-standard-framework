@@ -5,9 +5,7 @@
 package org.puremvc.as3.patterns.facade
 {
 
-	import org.puremvc.as3.core.view.*;
-	import org.puremvc.as3.core.model.*;
-	import org.puremvc.as3.core.controller.*;
+	import org.puremvc.as3.core.*;
 	import org.puremvc.as3.interfaces.*;
 	import org.puremvc.as3.patterns.observer.Notification;
 

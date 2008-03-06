@@ -2,7 +2,7 @@
  PureMVC - Copyright(c) 2006-08 Futurescale, Inc., Some rights reserved.
  Your reuse is governed by the Creative Commons Attribution 3.0 United States License
 */
-package org.puremvc.as3.core.model
+package org.puremvc.as3.core
 {
 	
 	import org.puremvc.as3.interfaces.*;
@@ -89,6 +89,7 @@ package org.puremvc.as3.core.model
 		public function registerProxy( proxy:IProxy ) : void
 		{
 			proxyMap[ proxy.getProxyName() ] = proxy;
+			proxy.onRegister();
 		}
 
 		/**
@@ -123,6 +124,7 @@ package org.puremvc.as3.core.model
 		{
 			var proxy:IProxy = proxyMap [ proxyName ] as IProxy;
 			proxyMap[ proxyName ] = null;
+			proxy.onRemove();
 			return proxy;
 		}
 
