@@ -86,13 +86,13 @@ package org.puremvc.as3.core
 		 */
 		public function registerObserver ( notificationName:String, observer:IObserver ) : void
 		{
-			if( observerMap[ notificationName ] != null ) {
-				observerMap[ notificationName ].push( observer );
+			var observers:Array = observerMap[ notificationName ];
+			if( observers ) {
+				observers.push( observer );
 			} else {
 				observerMap[ notificationName ] = [ observer ];	
 			}
 		}
-
 
 		/**
 		 * Notify the <code>IObservers</code> for a particular <code>INotification</code>.
@@ -114,7 +114,36 @@ package org.puremvc.as3.core
 				}
 			}
 		}
-						
+
+		/**
+		 * Remove the observer for a given notifyContext from an observer list for a given Notification name.
+		 * <P>
+		 * @param notificationName which observer list to remove from 
+		 * @param notifyContext remove the observer with this object as its notifyContext
+		 */
+		public function removeObserver( notificationName:String, notifyContext:Object ):void
+		{
+			// the observer list for the notification under inspection
+			var observers:Array = observerMap[ notificationName ] as Array;
+
+			// find the observer for the notifyContext
+			for ( var i:int=0; i<observers.length; i++ ) 
+			{
+				if ( Observer(observers[i]).compareNotifyContext( notifyContext ) == true ) {
+					// there can only be one Observer for a given notifyContext 
+					// in any given Observer list, so remove it and break
+					observers.splice(i,1);
+					break;
+				}
+			}
+
+			// Also, when a Notification's Observer list length falls to 
+			// zero, delete the notification key from the observer map
+			if ( observers.length == 0 ) {
+				delete observerMap[ notificationName ];		
+			}
+		} 
+
 		/**
 		 * Register an <code>IMediator</code> instance with the <code>View</code>.
 		 * 
@@ -140,8 +169,8 @@ package org.puremvc.as3.core
 			// Get Notification interests, if any.
 			var interests:Array = mediator.listNotificationInterests();
 
-			// Register Mediator as an observer for each notification of interests
-			if ( interests.length > 0) 
+			// Register Mediator as an observer for each of its notification interests
+			if ( interests.length > 0 ) 
 			{
 				// Create Observer referencing this mediator's handlNotification method
 				var observer:Observer = new Observer( mediator.handleNotification, mediator );
@@ -176,48 +205,30 @@ package org.puremvc.as3.core
 		 */
 		public function removeMediator( mediatorName:String ) : IMediator
 		{
-			// Go through the observer list for each notification 
-			// in the observer map and remove all Observers with a 
-			// reference to the Mediator being removed.
-			for ( var notificationName:String in observerMap ) {
-				// the observer list for the notification under inspection
-				var observers:Array = observerMap[ notificationName ];
-				// First, collect the indices of the observers to be removed 
-				var removalTargets:Array = new Array();
-				for ( var i:int=0;  i< observers.length; i++ ) {
-					if ( Observer(observers[i]).compareNotifyContext( retrieveMediator( mediatorName ) ) == true ) {
-						removalTargets.push(i);
-					}
-				}
-				// now the removalTargets array has an ascending 
-				// list of indices to be removed from the observers array
-				// so pop them off the array, effectively going from 
-				// highest index value to lowest, and splice each
-				// from the observers array. since we're going backwards,
-				// the collapsing of the array elements to fill the spliced
-				// out element's space does not affect the position of the
-				// lower numbered indices we've yet to remove
-				var target:int;
-				while ( removalTargets.length > 0 ) 
-				{
-					target = removalTargets.pop();
-					observers.splice(target,1);
-				}
-				// Also, when an notification's observer list length falls to 
-				// zero, delete the notification key from the observer map
-				if ( observers.length == 0 ) {
-					delete observerMap[ notificationName ];		
-				}
-			}			
-			// Remove the to the Mediator from the mediator map and return it
+			// Retrieve the named mediator
 			var mediator:IMediator = mediatorMap[ mediatorName ] as IMediator;
-			delete mediatorMap[ mediatorName ];
-
-			// alert the mediator that it has been removed
-			if (mediator) mediator.onRemove();
+			
+			if ( mediator ) 
+			{
+				// for every notification this mediator is interested in...
+				var interests:Array = mediator.listNotificationInterests();
+				for ( var i:Number=0; i<interests.length; i++ ) 
+				{
+					// remove the observer linking the mediator 
+					// to the notification interest
+					removeObserver( interests[i], mediator );
+				}	
+				
+				// remove the mediator from the map		
+				delete mediatorMap[ mediatorName ];
+	
+				// alert the mediator that it has been removed
+				mediator.onRemove();
+			}
+			
 			return mediator;
 		}
-						
+		
 		/**
 		 * Check if a Mediator is registered or not
 		 * 

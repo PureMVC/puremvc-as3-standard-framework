@@ -28,6 +28,7 @@ package org.puremvc.as3.interfaces
 	 */
 	public interface IView 
 	{
+		
 		/**
 		 * Register an <code>IObserver</code> to be notified
 		 * of <code>INotifications</code> with a given name.
@@ -35,7 +36,15 @@ package org.puremvc.as3.interfaces
 		 * @param notificationName the name of the <code>INotifications</code> to notify this <code>IObserver</code> of
 		 * @param observer the <code>IObserver</code> to register
 		 */
-		function registerObserver ( noteName:String, observer:IObserver ) : void;
+		function registerObserver( notificationName:String, observer:IObserver ) : void;
+
+		/**
+		 * Remove a group of observers from the observer list for a given Notification name.
+		 * <P>
+		 * @param notificationName which observer list to remove from 
+		 * @param notifyContext removed the observers with this object as their notifyContext
+		 */
+		function removeObserver( notificationName:String, notifyContext:Object ):void;
 
 		/**
 		 * Notify the <code>IObservers</code> for a particular <code>INotification</code>.
@@ -48,7 +57,7 @@ package org.puremvc.as3.interfaces
 		 * @param notification the <code>INotification</code> to notify <code>IObservers</code> of.
 		 */
 		function notifyObservers( note:INotification ) : void;
-		
+
 		/**
 		 * Register an <code>IMediator</code> instance with the <code>View</code>.
 		 * 
