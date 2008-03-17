@@ -1,0 +1,433 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Controller,org.puremvc.as3.core.Controller,SINGLETON_MSG,commandMap,instance,view,executeCommand,getInstance,hasCommand,initializeController,registerCommand,removeCommand" name="keywords">
+<title>org.puremvc.as3.core.Controller</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Controller - API Documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">PureMVC AS3 Framework - [Standard Version]</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/puremvc/as3/core/Controller.html&amp;org/puremvc/as3/core/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Controller</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Controller"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.puremvc.as3.core</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Controller</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../interfaces/IController.html">IController</a></td>
+</tr>
+</table>
+<p></p>
+  A Singleton <code>IController</code> implementation.
+  
+  <P>
+  In PureMVC, the <code>Controller</code> class follows the
+  'Command and Controller' strategy, and assumes these 
+  responsibilities:
+  <UL>
+  <LI> Remembering which <code>ICommand</code>s 
+  are intended to handle which <code>INotifications</code>.</LI>
+  <LI> Registering itself as an <code>IObserver</code> with
+  the <code>View</code> for each <code>INotification</code> 
+  that it has an <code>ICommand</code> mapping for.</LI>
+  <LI> Creating a new instance of the proper <code>ICommand</code>
+  to handle a given <code>INotification</code> when notified by the <code>View</code>.</LI>
+  <LI> Calling the <code>ICommand</code>'s <code>execute</code>
+  method, passing in the <code>INotification</code>.</LI> 
+  </UL>
+  
+  <P>
+  Your application must register <code>ICommands</code> with the 
+  Controller.
+  <P>
+   The simplest way is to subclass </code>Facade</code>, 
+  and use its <code>initializeController</code> method to add your 
+  registrations. 
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">View<br>
+<a href="../patterns/observer/Observer.html" target="">Observer</a>
+<br>
+<a href="../patterns/observer/Notification.html" target="">Notification</a>
+<br>
+<a href="../patterns/command/SimpleCommand.html" target="">SimpleCommand</a>
+<br>
+<a href="../patterns/command/MacroCommand.html" target="">MacroCommand</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a><a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#commandMap">commandMap</a> : Array<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#instance">instance</a> : <a href="../interfaces/IController.html">IController</a>
+<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#view">view</a> : <a href="../interfaces/IView.html">IView</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Controller()">Controller</a>()</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#executeCommand()">executeCommand</a>(note:<a href="../interfaces/INotification.html">INotification</a>):void</div>
+<div class="summaryTableDescription">
+   If an <code>ICommand</code> has previously been registered 
+   to handle a the given <code>INotification</code>, then it is executed.</div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getInstance()">getInstance</a>():<a href="../interfaces/IController.html">IController</a>
+</div>
+<div class="summaryTableDescription">[static]
+   <code>Controller</code> Singleton Factory method.</div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasCommand()">hasCommand</a>(notificationName:String):Boolean</div>
+<div class="summaryTableDescription">
+   Check if a Command is registered for a given Notification 
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#registerCommand()">registerCommand</a>(notificationName:String, commandClassRef:Class):void</div>
+<div class="summaryTableDescription">
+   Register a particular <code>ICommand</code> class as the handler 
+   for a particular <code>INotification</code>.</div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeCommand()">removeCommand</a>(notificationName:String):void</div>
+<div class="summaryTableDescription">
+   Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping.</div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initializeController()">initializeController</a>():void</div>
+<div class="summaryTableDescription">
+   Initialize the Singleton <code>Controller</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a><a name="protectedConstantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Constants</div>
+<table id="summaryTableProtectedConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#SINGLETON_MSG">SINGLETON_MSG</a> : String = "Controller Singleton already constructed!"<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Controller</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="commandMap"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">commandMap</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var commandMap:Array</code>
+</div>
+<a name="instance"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">instance</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected static var instance:<a href="../interfaces/IController.html">IController</a></code>
+</div>
+<a name="view"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">view</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var view:<a href="../interfaces/IView.html">IView</a></code>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Controller()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Controller</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Controller()</code><p>
+   Constructor. 
+   
+   <P>
+   This <code>IController</code> implementation is a Singleton, 
+   so you should not call the constructor 
+   directly, but instead call the static Singleton 
+   Factory method <code>Controller.getInstance()</code>
+   
+   </p><br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code></code> &mdash; Error if Singleton instance has already been constructed
+   
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="executeCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">executeCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function executeCommand(note:<a href="../interfaces/INotification.html">INotification</a>):void</code><p>
+   If an <code>ICommand</code> has previously been registered 
+   to handle a the given <code>INotification</code>, then it is executed.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">note</span>:<a href="../interfaces/INotification.html">INotification</a></code> &mdash; an <code>INotification</code>
+   </td>
+</tr>
+</table>
+</div>
+<a name="getInstance()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getInstance():<a href="../interfaces/IController.html">IController</a></code><p>
+   <code>Controller</code> Singleton Factory method.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../interfaces/IController.html">IController</a></code> &mdash; 
+                        the Singleton instance of <code>Controller</code>
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="hasCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasCommand(notificationName:String):Boolean</code><p>
+   Check if a Command is registered for a given Notification 
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; whether a Command is currently registered for the given <code>notificationName</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="initializeController()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initializeController</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function initializeController():void</code><p>
+   Initialize the Singleton <code>Controller</code> instance.
+   
+   <P>Called automatically by the constructor.</P> 
+   
+   <P>Note that if you are using a subclass of <code>View</code>
+   in your application, you should <i>also</i> subclass <code>Controller</code>
+   and override the <code>initializeController</code> method in the 
+   following way:</P>
+   
+   <div class='listing'><pre>
+    // ensure that the Controller is talking to my IView implementation
+    override public function initializeController(  ) : void 
+    {
+     view = MyView.getInstance();
+    }
+   </pre></div>
+   
+   </p></div>
+<a name="registerCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registerCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function registerCommand(notificationName:String, commandClassRef:Class):void</code><p>
+   Register a particular <code>ICommand</code> class as the handler 
+   for a particular <code>INotification</code>.
+   
+   <P>
+   If an <code>ICommand</code> has already been registered to 
+   handle <code>INotification</code>s with this name, it is no longer
+   used, the new <code>ICommand</code> is used instead.</P>
+   
+   The Observer for the new ICommand is only created if this the 
+   first time an ICommand has been regisered for this Notification name.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code> &mdash; the name of the <code>INotification</code>
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">commandClassRef</span>:Class</code> &mdash; the <code>Class</code> of the <code>ICommand</code>
+   </td>
+</tr>
+</table>
+</div>
+<a name="removeCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeCommand(notificationName:String):void</code><p>
+   Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code> &mdash; the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for
+   </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="SINGLETON_MSG"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">SINGLETON_MSG</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected const SINGLETON_MSG:String = "Controller Singleton already constructed!"</code>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">
+<footer> 
+</footer>
+</center>
+</div>
+</body>
+</html>
+<!-- -->

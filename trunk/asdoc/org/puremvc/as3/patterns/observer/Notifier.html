@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
+<meta content="Notifier,org.puremvc.as3.patterns.observer.Notifier,facade,sendNotification" name="keywords">
+<title>org.puremvc.as3.patterns.observer.Notifier</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Notifier - API Documentation';
+				var baseRef = '../../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">PureMVC AS3 Framework - [Standard Version]</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/puremvc/as3/patterns/observer/Notifier.html&amp;org/puremvc/as3/patterns/observer/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Notifier</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Notifier"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.puremvc.as3.patterns.observer</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Notifier</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../../interfaces/INotifier.html">INotifier</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../command/MacroCommand.html">MacroCommand</a>, <a href="../mediator/Mediator.html">Mediator</a>, <a href="../proxy/Proxy.html">Proxy</a>, <a href="../command/SimpleCommand.html">SimpleCommand</a></td>
+</tr>
+</table>
+<p></p>
+  A Base <code>INotifier</code> implementation.
+  
+  <P>
+  <code>MacroCommand, Command, Mediator</code> and <code>Proxy</code> 
+  all have a need to send <code>Notifications</code>. <P>
+  <P>
+  The <code>INotifier</code> interface provides a common method called
+  <code>sendNotification</code> that relieves implementation code of 
+  the necessity to actually construct <code>Notifications</code>.</P>
+  
+  <P>
+  The <code>Notifier</code> class, which all of the above mentioned classes
+  extend, provides an initialized reference to the <code>Facade</code>
+  Singleton, which is required for the convienience method
+  for sending <code>Notifications</code>, but also eases implementation as these
+  classes have frequent <code>Facade</code> interactions and usually require
+  access to the facade anyway.</P>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../facade/Facade.html" target="">Facade</a>
+<br>
+<a href="../mediator/Mediator.html" target="">Mediator</a>
+<br>
+<a href="../proxy/Proxy.html" target="">Proxy</a>
+<br>
+<a href="../command/SimpleCommand.html" target="">SimpleCommand</a>
+<br>
+<a href="../command/MacroCommand.html" target="">MacroCommand</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a><a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#facade">facade</a> : <a href="../../interfaces/IFacade.html">IFacade</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Notifier</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#sendNotification()">sendNotification</a>(notificationName:String, body:Object = null, type:String = null):void</div>
+<div class="summaryTableDescription">
+   Create and send an <code>INotification</code>.</div>
+</td><td class="summaryTableOwnerCol">Notifier</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="facade"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">facade</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var facade:<a href="../../interfaces/IFacade.html">IFacade</a></code>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="sendNotification()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sendNotification</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function sendNotification(notificationName:String, body:Object = null, type:String = null):void</code><p>
+   Create and send an <code>INotification</code>.
+   
+   <P>
+   Keeps us from having to construct new INotification 
+   instances in our implementation code.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code> &mdash; the name of the notiification to send
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">body</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; the body of the notification (optional)
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> (default = <code>null</code>)<code></code> &mdash; the type of the notification (optional)
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">
+<footer> 
+</footer>
+</center>
+</div>
+</body>
+</html>
+<!-- -->

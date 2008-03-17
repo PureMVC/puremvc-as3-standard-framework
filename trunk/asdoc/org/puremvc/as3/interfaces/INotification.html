@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="INotification,org.puremvc.as3.interfaces.INotification,getBody,getName,getType,setBody,setType,toString" name="keywords">
+<title>org.puremvc.as3.interfaces.INotification</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'INotification - API Documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">PureMVC AS3 Framework - [Standard Version]</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/puremvc/as3/interfaces/INotification.html&amp;org/puremvc/as3/interfaces/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;INotification</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface INotification"); titleBar_setSubNav(false,false,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.puremvc.as3.interfaces</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface INotification</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../patterns/observer/Notification.html">Notification</a></td>
+</tr>
+</table>
+<p></p>
+  The interface definition for a PureMVC Notification.
+    <P>
+  PureMVC does not rely upon underlying event models such 
+  as the one provided with Flash, and ActionScript 3 does 
+  not have an inherent event model.</P>
+  
+  <P>
+  The Observer Pattern as implemented within PureMVC exists 
+  to support event-driven communication between the 
+  application and the actors of the MVC triad.</P>
+  
+  <P>
+  Notifications are not meant to be a replacement for Events
+  in Flex/Flash/AIR. Generally, <code>IMediator</code> implementors
+  place event listeners on their view components, which they
+  then handle in the usual way. This may lead to the broadcast of <code>Notification</code>s to 
+  trigger <code>ICommand</code>s or to communicate with other <code>IMediators</code>. <code>IProxy</code> and <code>ICommand</code>
+  instances communicate with each other and <code>IMediator</code>s 
+  by broadcasting <code>INotification</code>s.</P>
+  
+  <P>
+  A key difference between Flash <code>Event</code>s and PureMVC 
+  <code>Notification</code>s is that <code>Event</code>s follow the 
+  'Chain of Responsibility' pattern, 'bubbling' up the display hierarchy 
+  until some parent component handles the <code>Event</code>, while
+  PureMVC <code>Notification</code>s follow a 'Publish/Subscribe'
+  pattern. PureMVC classes need not be related to each other in a 
+  parent/child relationship in order to communicate with one another
+  using <code>Notification</code>s.
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../interfaces/IView.html" target="">IView</a>
+<br>
+<a href="../interfaces/IObserver.html" target="">IObserver</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getBody()">getBody</a>():Object</div>
+<div class="summaryTableDescription">
+   Get the body of the <code>INotification</code> instance
+   </div>
+</td><td class="summaryTableOwnerCol">INotification</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getName()">getName</a>():String</div>
+<div class="summaryTableDescription">
+   Get the name of the <code>INotification</code> instance.</div>
+</td><td class="summaryTableOwnerCol">INotification</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getType()">getType</a>():String</div>
+<div class="summaryTableDescription">
+   Get the type of the <code>INotification</code> instance
+   </div>
+</td><td class="summaryTableOwnerCol">INotification</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setBody()">setBody</a>(body:Object):void</div>
+<div class="summaryTableDescription">
+   Set the body of the <code>INotification</code> instance
+   </div>
+</td><td class="summaryTableOwnerCol">INotification</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setType()">setType</a>(type:String):void</div>
+<div class="summaryTableDescription">
+   Set the type of the <code>INotification</code> instance
+   </div>
+</td><td class="summaryTableOwnerCol">INotification</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toString()">toString</a>():String</div>
+<div class="summaryTableDescription">
+   Get the string representation of the <code>INotification</code> instance
+   </div>
+</td><td class="summaryTableOwnerCol">INotification</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="getBody()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getBody</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getBody():Object</code><p>
+   Get the body of the <code>INotification</code> instance
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Object</code></td>
+</tr>
+</table>
+</div>
+<a name="getName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getName():String</code><p>
+   Get the name of the <code>INotification</code> instance. 
+   No setter, should be set by constructor only
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code></td>
+</tr>
+</table>
+</div>
+<a name="getType()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getType</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getType():String</code><p>
+   Get the type of the <code>INotification</code> instance
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code></td>
+</tr>
+</table>
+</div>
+<a name="setBody()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setBody</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setBody(body:Object):void</code><p>
+   Set the body of the <code>INotification</code> instance
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">body</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="setType()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setType</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setType(type:String):void</code><p>
+   Set the type of the <code>INotification</code> instance
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code></td>
+</tr>
+</table>
+</div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toString():String</code><p>
+   Get the string representation of the <code>INotification</code> instance
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code></td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">
+<footer> 
+</footer>
+</center>
+</div>
+</body>
+</html>
+<!-- -->

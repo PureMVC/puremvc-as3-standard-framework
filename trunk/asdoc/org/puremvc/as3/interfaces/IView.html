@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="IView,org.puremvc.as3.interfaces.IView,hasMediator,notifyObservers,registerMediator,registerObserver,removeMediator,removeObserver,retrieveMediator" name="keywords">
+<title>org.puremvc.as3.interfaces.IView</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'IView - API Documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">PureMVC AS3 Framework - [Standard Version]</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/puremvc/as3/interfaces/IView.html&amp;org/puremvc/as3/interfaces/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;IView</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface IView"); titleBar_setSubNav(false,false,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.puremvc.as3.interfaces</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IView</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../core/View.html">View</a></td>
+</tr>
+</table>
+<p></p>
+  The interface definition for a PureMVC View.
+  
+  <P>
+  In PureMVC, <code>IView</code> implementors assume these responsibilities:</P>
+  
+  <P>
+  In PureMVC, the <code>View</code> class assumes these responsibilities:
+  <UL>
+  <LI>Maintain a cache of <code>IMediator</code> instances.</LI>
+  <LI>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</LI>
+  <LI>Managing the observer lists for each <code>INotification</code> in the application.</LI>
+  <LI>Providing a method for attaching <code>IObservers</code> to an <code>INotification</code>'s observer list.</LI>
+  <LI>Providing a method for broadcasting an <code>INotification</code>.</LI>
+  <LI>Notifying the <code>IObservers</code> of a given <code>INotification</code> when it broadcast.</LI>
+  </UL>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../interfaces/IMediator.html" target="">IMediator</a>
+<br>
+<a href="../interfaces/IObserver.html" target="">IObserver</a>
+<br>
+<a href="../interfaces/INotification.html" target="">INotification</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasMediator()">hasMediator</a>(mediatorName:String):Boolean</div>
+<div class="summaryTableDescription">
+   Check if a Mediator is registered or not
+   
+   </div>
+</td><td class="summaryTableOwnerCol">IView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#notifyObservers()">notifyObservers</a>(note:<a href="INotification.html">INotification</a>):void</div>
+<div class="summaryTableDescription">
+   Notify the <code>IObservers</code> for a particular <code>INotification</code>.</div>
+</td><td class="summaryTableOwnerCol">IView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#registerMediator()">registerMediator</a>(mediator:<a href="IMediator.html">IMediator</a>):void</div>
+<div class="summaryTableDescription">
+   Register an <code>IMediator</code> instance with the <code>View</code>.</div>
+</td><td class="summaryTableOwnerCol">IView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#registerObserver()">registerObserver</a>(notificationName:String, observer:<a href="IObserver.html">IObserver</a>):void</div>
+<div class="summaryTableDescription">
+   Register an <code>IObserver</code> to be notified
+   of <code>INotifications</code> with a given name.</div>
+</td><td class="summaryTableOwnerCol">IView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeMediator()">removeMediator</a>(mediatorName:String):<a href="../interfaces/IMediator.html">IMediator</a>
+</div>
+<div class="summaryTableDescription">
+   Remove an <code>IMediator</code> from the <code>View</code>.</div>
+</td><td class="summaryTableOwnerCol">IView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeObserver()">removeObserver</a>(notificationName:String, notifyContext:Object):void</div>
+<div class="summaryTableDescription">
+   Remove a group of observers from the observer list for a given Notification name.</div>
+</td><td class="summaryTableOwnerCol">IView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#retrieveMediator()">retrieveMediator</a>(mediatorName:String):<a href="../interfaces/IMediator.html">IMediator</a>
+</div>
+<div class="summaryTableDescription">
+   Retrieve an <code>IMediator</code> from the <code>View</code>.</div>
+</td><td class="summaryTableOwnerCol">IView</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="hasMediator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasMediator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasMediator(mediatorName:String):Boolean</code><p>
+   Check if a Mediator is registered or not
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mediatorName</span>:String</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; whether a Mediator is registered with the given <code>mediatorName</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="notifyObservers()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">notifyObservers</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function notifyObservers(note:<a href="INotification.html">INotification</a>):void</code><p>
+   Notify the <code>IObservers</code> for a particular <code>INotification</code>.
+   
+   <P>
+   All previously attached <code>IObservers</code> for this <code>INotification</code>'s
+   list are notified and are passed a reference to the <code>INotification</code> in 
+   the order in which they were registered.</P>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">note</span>:<a href="INotification.html">INotification</a></code> &mdash; the <code>INotification</code> to notify <code>IObservers</code> of.
+   </td>
+</tr>
+</table>
+</div>
+<a name="registerMediator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registerMediator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function registerMediator(mediator:<a href="IMediator.html">IMediator</a>):void</code><p>
+   Register an <code>IMediator</code> instance with the <code>View</code>.
+   
+   <P>
+   Registers the <code>IMediator</code> so that it can be retrieved by name,
+   and further interrogates the <code>IMediator</code> for its 
+   <code>INotification</code> interests.</P>
+   <P>
+   If the <code>IMediator</code> returns any <code>INotification</code> 
+   names to be notified about, an <code>Observer</code> is created encapsulating 
+   the <code>IMediator</code> instance's <code>handleNotification</code> method 
+   and registering it as an <code>Observer</code> for all <code>INotifications</code> the 
+   <code>IMediator</code> is interested in.</p>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mediator</span>:<a href="IMediator.html">IMediator</a></code> &mdash; the name to associate with this <code>IMediator</code> instance
+   </td>
+</tr>
+</table>
+</div>
+<a name="registerObserver()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registerObserver</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function registerObserver(notificationName:String, observer:<a href="IObserver.html">IObserver</a>):void</code><p>
+   Register an <code>IObserver</code> to be notified
+   of <code>INotifications</code> with a given name.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code> &mdash; the name of the <code>INotifications</code> to notify this <code>IObserver</code> of
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">observer</span>:<a href="IObserver.html">IObserver</a></code> &mdash; the <code>IObserver</code> to register
+   </td>
+</tr>
+</table>
+</div>
+<a name="removeMediator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeMediator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeMediator(mediatorName:String):<a href="../interfaces/IMediator.html">IMediator</a></code><p>
+   Remove an <code>IMediator</code> from the <code>View</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mediatorName</span>:String</code> &mdash; name of the <code>IMediator</code> instance to be removed.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../interfaces/IMediator.html">IMediator</a></code> &mdash; 
+                        the <code>IMediator</code> that was removed from the <code>View</code>
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="removeObserver()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeObserver</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeObserver(notificationName:String, notifyContext:Object):void</code><p>
+   Remove a group of observers from the observer list for a given Notification name.
+   <P>
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code> &mdash; which observer list to remove from 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">notifyContext</span>:Object</code> &mdash; removed the observers with this object as their notifyContext
+   </td>
+</tr>
+</table>
+</div>
+<a name="retrieveMediator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">retrieveMediator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function retrieveMediator(mediatorName:String):<a href="../interfaces/IMediator.html">IMediator</a></code><p>
+   Retrieve an <code>IMediator</code> from the <code>View</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mediatorName</span>:String</code> &mdash; the name of the <code>IMediator</code> instance to retrieve.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../interfaces/IMediator.html">IMediator</a></code> &mdash; 
+                        the <code>IMediator</code> instance previously registered with the given <code>mediatorName</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">
+<footer> 
+</footer>
+</center>
+</div>
+</body>
+</html>
+<!-- -->
