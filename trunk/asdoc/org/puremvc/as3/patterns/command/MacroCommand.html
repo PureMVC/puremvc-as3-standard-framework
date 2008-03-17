@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
+<meta content="MacroCommand,org.puremvc.as3.patterns.command.MacroCommand,addSubCommand,execute,initializeMacroCommand" name="keywords">
+<title>org.puremvc.as3.patterns.command.MacroCommand</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'MacroCommand - API Documentation';
+				var baseRef = '../../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">PureMVC AS3 Framework - [Standard Version]</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/puremvc/as3/patterns/command/MacroCommand.html&amp;org/puremvc/as3/patterns/command/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;MacroCommand</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class MacroCommand"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.puremvc.as3.patterns.command</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class MacroCommand</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">MacroCommand <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> <a href="../observer/Notifier.html">Notifier</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../../interfaces/ICommand.html">ICommand</a>, <a href="../../interfaces/INotifier.html">INotifier</a></td>
+</tr>
+</table>
+<p></p>
+  A base <code>ICommand</code> implementation that executes other <code>ICommand</code>s.
+   
+  <P>
+  A <code>MacroCommand</code> maintains an list of
+  <code>ICommand</code> Class references called <i>SubCommands</i>.</P>
+  
+  <P>
+  When <code>execute</code> is called, the <code>MacroCommand</code> 
+  instantiates and calls <code>execute</code> on each of its <i>SubCommands</i> turn.
+  Each <i>SubCommand</i> will be passed a reference to the original
+  <code>INotification</code> that was passed to the <code>MacroCommand</code>'s 
+  <code>execute</code> method.</P>
+  
+  <P>
+  Unlike <code>SimpleCommand</code>, your subclass
+  should not override <code>execute</code>, but instead, should 
+  override the <code>initializeMacroCommand</code> method, 
+  calling <code>addSubCommand</code> once for each <i>SubCommand</i>
+  to be executed.</P>
+  
+  <P>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">Controller<br>
+<a href="../observer/Notification.html" target="">Notification</a>
+<br>
+<a href="../command/SimpleCommand.html" target="">SimpleCommand</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a><a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../observer/Notifier.html#facade">facade</a> : <a href="../../interfaces/IFacade.html">IFacade</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../observer/Notifier.html">Notifier</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#MacroCommand()">MacroCommand</a>()</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">MacroCommand</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#execute()">execute</a>(notification:<a href="../../interfaces/INotification.html">INotification</a>):void</div>
+<div class="summaryTableDescription"> 
+   Execute this <code>MacroCommand</code>'s <i>SubCommands</i>.</div>
+</td><td class="summaryTableOwnerCol">MacroCommand</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../observer/Notifier.html#sendNotification()">sendNotification</a>(notificationName:String, body:Object = null, type:String = null):void</div>
+<div class="summaryTableDescription">
+   Create and send an <code>INotification</code>.</div>
+</td><td class="summaryTableOwnerCol"><a href="../observer/Notifier.html">Notifier</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addSubCommand()">addSubCommand</a>(commandClassRef:Class):void</div>
+<div class="summaryTableDescription">
+   Add a <i>SubCommand</i>.</div>
+</td><td class="summaryTableOwnerCol">MacroCommand</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initializeMacroCommand()">initializeMacroCommand</a>():void</div>
+<div class="summaryTableDescription">
+   Initialize the <code>MacroCommand</code>.</div>
+</td><td class="summaryTableOwnerCol">MacroCommand</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="MacroCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">MacroCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function MacroCommand()</code><p>
+   Constructor. 
+   
+   <P>
+   You should not need to define a constructor, 
+   instead, override the <code>initializeMacroCommand</code>
+   method.</P>
+   
+   <P>
+   If your subclass does define a constructor, be 
+   sure to call <code>super()</code>.</P>
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addSubCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addSubCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function addSubCommand(commandClassRef:Class):void</code><p>
+   Add a <i>SubCommand</i>.
+   
+   <P>
+   The <i>SubCommands</i> will be called in First In/First Out (FIFO)
+   order.</P>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">commandClassRef</span>:Class</code> &mdash; a reference to the <code>Class</code> of the <code>ICommand</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="execute()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">execute</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public final function execute(notification:<a href="../../interfaces/INotification.html">INotification</a>):void</code><p> 
+   Execute this <code>MacroCommand</code>'s <i>SubCommands</i>.
+   
+   <P>
+   The <i>SubCommands</i> will be called in First In/First Out (FIFO)
+   order. 
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notification</span>:<a href="../../interfaces/INotification.html">INotification</a></code> &mdash; the <code>INotification</code> object to be passsed to each <i>SubCommand</i>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="initializeMacroCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initializeMacroCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function initializeMacroCommand():void</code><p>
+   Initialize the <code>MacroCommand</code>.
+   
+   <P>
+   In your subclass, override this method to 
+   initialize the <code>MacroCommand</code>'s <i>SubCommand</i>  
+   list with <code>ICommand</code> class references like 
+   this:</P>
+   
+   <div class='listing'><pre>
+    // Initialize MyMacroCommand
+    override protected function initializeMacroCommand( ) : void
+    {
+     addSubCommand( com.me.myapp.controller.FirstCommand );
+     addSubCommand( com.me.myapp.controller.SecondCommand );
+     addSubCommand( com.me.myapp.controller.ThirdCommand );
+    }
+   </pre></div>
+   
+   <P>
+   Note that <i>SubCommand</i>s may be any <code>ICommand</code> implementor,
+   <code>MacroCommand</code>s or <code>SimpleCommands</code> are both acceptable.
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">
+<footer> 
+</footer>
+</center>
+</div>
+</body>
+</html>
+<!-- -->

@@ -1,0 +1,940 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
+<meta content="Facade,org.puremvc.as3.patterns.facade.Facade,SINGLETON_MSG,controller,instance,model,view,getInstance,hasCommand,hasMediator,hasProxy,initializeController,initializeFacade,initializeModel,initializeView,notifyObservers,registerCommand,registerMediator,registerProxy,removeCommand,removeMediator,removeProxy,retrieveMediator,retrieveProxy,sendNotification" name="keywords">
+<title>org.puremvc.as3.patterns.facade.Facade</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Facade - API Documentation';
+				var baseRef = '../../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">PureMVC AS3 Framework - [Standard Version]</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/puremvc/as3/patterns/facade/Facade.html&amp;org/puremvc/as3/patterns/facade/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Facade</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Facade"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.puremvc.as3.patterns.facade</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Facade</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../../interfaces/IFacade.html">IFacade</a></td>
+</tr>
+</table>
+<p></p>
+  A base Singleton <code>IFacade</code> implementation.
+  
+  <P>
+  In PureMVC, the <code>Facade</code> class assumes these 
+  responsibilities:
+  <UL>
+  <LI>Initializing the <code>Model</code>, <code>View</code>
+  and <code>Controller</code> Singletons.</LI> 
+  <LI>Providing all the methods defined by the <code>IModel, 
+  IView, & IController</code> interfaces.</LI>
+  <LI>Providing the ability to override the specific <code>Model</code>,
+  <code>View</code> and <code>Controller</code> Singletons created.</LI> 
+  <LI>Providing a single point of contact to the application for 
+  registering <code>Commands</code> and notifying <code>Observers</code></LI>
+  </UL>
+  <P>
+   Example usage:
+  <div class='listing'><pre>
+  import org.puremvc.as3.patterns.facade.&lowast;;
+  
+  import com.me.myapp.model.*;
+  import com.me.myapp.view.*;
+  import com.me.myapp.controller.*;
+  
+  public class MyFacade extends Facade
+  {
+   // Notification constants. The Facade is the ideal
+   // location for these constants, since any part
+   // of the application participating in PureMVC 
+   // Observer Notification will know the Facade.
+   public static const GO_COMMAND:String = "go";
+    
+   // Override Singleton Factory method 
+   public static function getInstance() : MyFacade {
+    if (instance == null) instance = new MyFacade();
+    return instance as MyFacade;
+   }
+    
+   // optional initialization hook for Facade
+   override public function initializeFacade() : void {
+    super.initializeFacade();
+    // do any special subclass initialization here
+   }
+  
+   // optional initialization hook for Controller
+   override public function initializeController() : void {
+    // call super to use the PureMVC Controller Singleton. 
+    super.initializeController();
+  
+    // Otherwise, if you're implmenting your own
+    // IController, then instead do:
+    // if ( controller != null ) return;
+    // controller = MyAppController.getInstance();
+    
+    // do any special subclass initialization here
+    // such as registering Commands
+    registerCommand( GO_COMMAND, com.me.myapp.controller.GoCommand )
+   }
+  
+   // optional initialization hook for Model
+   override public function initializeModel() : void {
+    // call super to use the PureMVC Model Singleton. 
+    super.initializeModel();
+  
+    // Otherwise, if you're implmenting your own
+    // IModel, then instead do:
+    // if ( model != null ) return;
+    // model = MyAppModel.getInstance();
+    
+    // do any special subclass initialization here
+    // such as creating and registering Model proxys
+    // that don't require a facade reference at
+    // construction time, such as fixed type lists
+    // that never need to send Notifications.
+    regsiterProxy( new USStateNamesProxy() );
+     
+    // CAREFUL: Can't reference Facade instance in constructor 
+    // of new Proxys from here, since this step is part of
+    // Facade construction!  Usually, Proxys needing to send 
+    // notifications are registered elsewhere in the app 
+    // for this reason.
+   }
+  
+   // optional initialization hook for View
+   override public function initializeView() : void {
+    // call super to use the PureMVC View Singleton. 
+    super.initializeView();
+  
+    // Otherwise, if you're implmenting your own
+    // IView, then instead do:
+    // if ( view != null ) return;
+    // view = MyAppView.getInstance();
+    
+    // do any special subclass initialization here
+    // such as creating and registering Mediators
+    // that do not need a Facade reference at construction
+    // time.
+    registerMediator( new LoginMediator() ); 
+  
+    // CAREFUL: Can't reference Facade instance in constructor 
+    // of new Mediators from here, since this is a step
+    // in Facade construction! Usually, all Mediators need 
+    // receive notifications, and are registered elsewhere in 
+    // the app for this reason.
+   }
+  }
+  </pre></div>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">Model<br>View<br>Controller<br>
+<a href="../observer/Notification.html" target="">Notification</a>
+<br>
+<a href="../mediator/Mediator.html" target="">Mediator</a>
+<br>
+<a href="../proxy/Proxy.html" target="">Proxy</a>
+<br>
+<a href="../command/SimpleCommand.html" target="">SimpleCommand</a>
+<br>
+<a href="../command/MacroCommand.html" target="">MacroCommand</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a><a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#controller">controller</a> : <a href="../../interfaces/IController.html">IController</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#instance">instance</a> : <a href="../../interfaces/IFacade.html">IFacade</a>
+<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#model">model</a> : <a href="../../interfaces/IModel.html">IModel</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#view">view</a> : <a href="../../interfaces/IView.html">IView</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Facade()">Facade</a>()</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getInstance()">getInstance</a>():<a href="../../interfaces/IFacade.html">IFacade</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Facade Singleton Factory method
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasCommand()">hasCommand</a>(notificationName:String):Boolean</div>
+<div class="summaryTableDescription">
+   Check if a Command is registered for a given Notification 
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasMediator()">hasMediator</a>(mediatorName:String):Boolean</div>
+<div class="summaryTableDescription">
+   Check if a Mediator is registered or not
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasProxy()">hasProxy</a>(proxyName:String):Boolean</div>
+<div class="summaryTableDescription">
+   Check if a Proxy is registered
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#notifyObservers()">notifyObservers</a>(notification:<a href="../../interfaces/INotification.html">INotification</a>):void</div>
+<div class="summaryTableDescription">
+   Notify <code>Observer</code>s.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#registerCommand()">registerCommand</a>(notificationName:String, commandClassRef:Class):void</div>
+<div class="summaryTableDescription">
+   Register an <code>ICommand</code> with the <code>Controller</code> by Notification name.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#registerMediator()">registerMediator</a>(mediator:<a href="../../interfaces/IMediator.html">IMediator</a>):void</div>
+<div class="summaryTableDescription">
+   Register a <code>IMediator</code> with the <code>View</code>.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#registerProxy()">registerProxy</a>(proxy:<a href="../../interfaces/IProxy.html">IProxy</a>):void</div>
+<div class="summaryTableDescription">
+   Register an <code>IProxy</code> with the <code>Model</code> by name.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeCommand()">removeCommand</a>(notificationName:String):void</div>
+<div class="summaryTableDescription">
+   Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping from the Controller.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeMediator()">removeMediator</a>(mediatorName:String):<a href="../../interfaces/IMediator.html">IMediator</a>
+</div>
+<div class="summaryTableDescription">
+   Remove an <code>IMediator</code> from the <code>View</code>.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeProxy()">removeProxy</a>(proxyName:String):<a href="../../interfaces/IProxy.html">IProxy</a>
+</div>
+<div class="summaryTableDescription">
+   Remove an <code>IProxy</code> from the <code>Model</code> by name.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#retrieveMediator()">retrieveMediator</a>(mediatorName:String):<a href="../../interfaces/IMediator.html">IMediator</a>
+</div>
+<div class="summaryTableDescription">
+   Retrieve an <code>IMediator</code> from the <code>View</code>.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#retrieveProxy()">retrieveProxy</a>(proxyName:String):<a href="../../interfaces/IProxy.html">IProxy</a>
+</div>
+<div class="summaryTableDescription">
+   Retrieve an <code>IProxy</code> from the <code>Model</code> by name.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#sendNotification()">sendNotification</a>(notificationName:String, body:Object = null, type:String = null):void</div>
+<div class="summaryTableDescription">
+   Create and send an <code>INotification</code>.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initializeController()">initializeController</a>():void</div>
+<div class="summaryTableDescription">
+   Initialize the <code>Controller</code>.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initializeFacade()">initializeFacade</a>():void</div>
+<div class="summaryTableDescription">
+   Initialize the Singleton <code>Facade</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initializeModel()">initializeModel</a>():void</div>
+<div class="summaryTableDescription">
+   Initialize the <code>Model</code>.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initializeView()">initializeView</a>():void</div>
+<div class="summaryTableDescription">
+   Initialize the <code>View</code>.</div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a><a name="protectedConstantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Constants</div>
+<table id="summaryTableProtectedConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#SINGLETON_MSG">SINGLETON_MSG</a> : String = "Facade Singleton already constructed!"<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Facade</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="controller"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">controller</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var controller:<a href="../../interfaces/IController.html">IController</a></code>
+</div>
+<a name="instance"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">instance</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected static var instance:<a href="../../interfaces/IFacade.html">IFacade</a></code>
+</div>
+<a name="model"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">model</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var model:<a href="../../interfaces/IModel.html">IModel</a></code>
+</div>
+<a name="view"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">view</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var view:<a href="../../interfaces/IView.html">IView</a></code>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Facade()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Facade</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Facade()</code><p>
+   Constructor. 
+   
+   <P>
+   This <code>IFacade</code> implementation is a Singleton, 
+   so you should not call the constructor 
+   directly, but instead call the static Singleton 
+   Factory method <code>Facade.getInstance()</code>
+   
+   </p><br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code></code> &mdash; Error if Singleton instance has already been constructed
+   
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="getInstance()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getInstance():<a href="../../interfaces/IFacade.html">IFacade</a></code><p>
+   Facade Singleton Factory method
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../interfaces/IFacade.html">IFacade</a></code> &mdash; 
+                        the Singleton instance of the Facade
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="hasCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasCommand(notificationName:String):Boolean</code><p>
+   Check if a Command is registered for a given Notification 
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; whether a Command is currently registered for the given <code>notificationName</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="hasMediator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasMediator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasMediator(mediatorName:String):Boolean</code><p>
+   Check if a Mediator is registered or not
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mediatorName</span>:String</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; whether a Mediator is registered with the given <code>mediatorName</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="hasProxy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasProxy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasProxy(proxyName:String):Boolean</code><p>
+   Check if a Proxy is registered
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">proxyName</span>:String</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; whether a Proxy is currently registered with the given <code>proxyName</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="initializeController()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initializeController</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function initializeController():void</code><p>
+   Initialize the <code>Controller</code>.
+   
+   <P>
+   Called by the <code>initializeFacade</code> method.
+   Override this method in your subclass of <code>Facade</code> 
+   if one or both of the following are true:
+   <UL>
+   <LI> You wish to initialize a different <code>IController</code>.</LI>
+   <LI> You have <code>Commands</code> to register with the <code>Controller</code> at startup.</code>. </LI>    
+   </UL>
+   If you don't want to initialize a different <code>IController</code>, 
+   call <code>super.initializeController()</code> at the beginning of your
+   method, then register <code>Command</code>s.
+   </P>
+   </p></div>
+<a name="initializeFacade()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initializeFacade</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function initializeFacade():void</code><p>
+   Initialize the Singleton <code>Facade</code> instance.
+   
+   <P>
+   Called automatically by the constructor. Override in your
+   subclass to do any subclass specific initializations. Be
+   sure to call <code>super.initializeFacade()</code>, though.</P>
+   </p></div>
+<a name="initializeModel()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initializeModel</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function initializeModel():void</code><p>
+   Initialize the <code>Model</code>.
+   
+   <P>
+   Called by the <code>initializeFacade</code> method.
+   Override this method in your subclass of <code>Facade</code> 
+   if one or both of the following are true:
+   <UL>
+   <LI> You wish to initialize a different <code>IModel</code>.</LI>
+   <LI> You have <code>Proxy</code>s to register with the Model that do not 
+   retrieve a reference to the Facade at construction time.</code></LI> 
+   </UL>
+   If you don't want to initialize a different <code>IModel</code>, 
+   call <code>super.initializeModel()</code> at the beginning of your
+   method, then register <code>Proxy</code>s.
+   <P>
+   Note: This method is <i>rarely</i> overridden; in practice you are more
+   likely to use a <code>Command</code> to create and register <code>Proxy</code>s
+   with the <code>Model</code>, since <code>Proxy</code>s with mutable data will likely
+   need to send <code>INotification</code>s and thus will likely want to fetch a reference to 
+   the <code>Facade</code> during their construction. 
+   </P>
+   </p></div>
+<a name="initializeView()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initializeView</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function initializeView():void</code><p>
+   Initialize the <code>View</code>.
+   
+   <P>
+   Called by the <code>initializeFacade</code> method.
+   Override this method in your subclass of <code>Facade</code> 
+   if one or both of the following are true:
+   <UL>
+   <LI> You wish to initialize a different <code>IView</code>.</LI>
+   <LI> You have <code>Observers</code> to register with the <code>View</code></LI>
+   </UL>
+   If you don't want to initialize a different <code>IView</code>, 
+   call <code>super.initializeView()</code> at the beginning of your
+   method, then register <code>IMediator</code> instances.
+   <P>
+   Note: This method is <i>rarely</i> overridden; in practice you are more
+   likely to use a <code>Command</code> to create and register <code>Mediator</code>s
+   with the <code>View</code>, since <code>IMediator</code> instances will need to send 
+   <code>INotification</code>s and thus will likely want to fetch a reference 
+   to the <code>Facade</code> during their construction. 
+   </P>
+   </p></div>
+<a name="notifyObservers()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">notifyObservers</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function notifyObservers(notification:<a href="../../interfaces/INotification.html">INotification</a>):void</code><p>
+   Notify <code>Observer</code>s.
+   <P>
+   This method is left public mostly for backward 
+   compatibility, and to allow you to send custom 
+   notification classes using the facade.</P>
+   P> 
+   Usually you should just call sendNotification
+   and pass the parameters, never having to 
+   construct the notification yourself.</P>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notification</span>:<a href="../../interfaces/INotification.html">INotification</a></code> &mdash; the <code>INotification</code> to have the <code>View</code> notify <code>Observers</code> of.
+   </td>
+</tr>
+</table>
+</div>
+<a name="registerCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registerCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function registerCommand(notificationName:String, commandClassRef:Class):void</code><p>
+   Register an <code>ICommand</code> with the <code>Controller</code> by Notification name.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code> &mdash; the name of the <code>INotification</code> to associate the <code>ICommand</code> with
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">commandClassRef</span>:Class</code> &mdash; a reference to the Class of the <code>ICommand</code>
+   </td>
+</tr>
+</table>
+</div>
+<a name="registerMediator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registerMediator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function registerMediator(mediator:<a href="../../interfaces/IMediator.html">IMediator</a>):void</code><p>
+   Register a <code>IMediator</code> with the <code>View</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mediator</span>:<a href="../../interfaces/IMediator.html">IMediator</a></code> &mdash; the name to associate with this <code>IMediator</code>
+   </td>
+</tr>
+</table>
+</div>
+<a name="registerProxy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registerProxy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function registerProxy(proxy:<a href="../../interfaces/IProxy.html">IProxy</a>):void</code><p>
+   Register an <code>IProxy</code> with the <code>Model</code> by name.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">proxy</span>:<a href="../../interfaces/IProxy.html">IProxy</a></code> &mdash; the name of the <code>IProxy</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="removeCommand()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeCommand</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeCommand(notificationName:String):void</code><p>
+   Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping from the Controller.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code> &mdash; the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for
+   </td>
+</tr>
+</table>
+</div>
+<a name="removeMediator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeMediator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeMediator(mediatorName:String):<a href="../../interfaces/IMediator.html">IMediator</a></code><p>
+   Remove an <code>IMediator</code> from the <code>View</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mediatorName</span>:String</code> &mdash; name of the <code>IMediator</code> to be removed.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../interfaces/IMediator.html">IMediator</a></code> &mdash; 
+                        the <code>IMediator</code> that was removed from the <code>View</code>
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="removeProxy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeProxy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeProxy(proxyName:String):<a href="../../interfaces/IProxy.html">IProxy</a></code><p>
+   Remove an <code>IProxy</code> from the <code>Model</code> by name.
+      </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">proxyName</span>:String</code> &mdash; the <code>IProxy</code> to remove from the <code>Model</code>.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../interfaces/IProxy.html">IProxy</a></code> &mdash; 
+                        the <code>IProxy</code> that was removed from the <code>Model</code>
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="retrieveMediator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">retrieveMediator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function retrieveMediator(mediatorName:String):<a href="../../interfaces/IMediator.html">IMediator</a></code><p>
+   Retrieve an <code>IMediator</code> from the <code>View</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mediatorName</span>:String</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../interfaces/IMediator.html">IMediator</a></code> &mdash; 
+                        the <code>IMediator</code> previously registered with the given <code>mediatorName</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="retrieveProxy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">retrieveProxy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function retrieveProxy(proxyName:String):<a href="../../interfaces/IProxy.html">IProxy</a></code><p>
+   Retrieve an <code>IProxy</code> from the <code>Model</code> by name.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">proxyName</span>:String</code> &mdash; the name of the proxy to be retrieved.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../interfaces/IProxy.html">IProxy</a></code> &mdash; 
+                        the <code>IProxy</code> instance previously registered with the given <code>proxyName</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="sendNotification()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sendNotification</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function sendNotification(notificationName:String, body:Object = null, type:String = null):void</code><p>
+   Create and send an <code>INotification</code>.
+   
+   <P>
+   Keeps us from having to construct new notification 
+   instances in our implementation code.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">notificationName</span>:String</code> &mdash; the name of the notiification to send
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">body</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; the body of the notification (optional)
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> (default = <code>null</code>)<code></code> &mdash; the type of the notification (optional)
+   </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="SINGLETON_MSG"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">SINGLETON_MSG</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected const SINGLETON_MSG:String = "Facade Singleton already constructed!"</code>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">
+<footer> 
+</footer>
+</center>
+</div>
+</body>
+</html>
+<!-- -->
