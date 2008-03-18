@@ -112,5 +112,20 @@ package org.puremvc.as3.interfaces
 		 */
 		function hasMediator( mediatorName:String ) : Boolean;
 
+		/**
+		 * Notify the <code>IObservers</code> for a particular <code>INotification</code>.
+		 * 
+		 * <P>
+		 * All previously attached <code>IObservers</code> for this <code>INotification</code>'s
+		 * list are notified and are passed a reference to the <code>INotification</code> in 
+		 * the order in which they were registered.</P>
+		 * <P>
+		 * NOTE: Use this method only if you are sending custom Notifications. Otherwise
+		 * use the sendNotification method which does not require you to create the
+		 * Notification instance.</P> 
+		 * 
+		 * @param notification the <code>INotification</code> to notify <code>IObservers</code> of.
+		 */
+		function notifyObservers( note:INotification ) : void;
 	}
 }
