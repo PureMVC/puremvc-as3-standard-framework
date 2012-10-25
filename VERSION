@@ -1,4 +1,4 @@
-PureMVC - Copyright(c) 2006-08 Futurescale, Inc., Some rights reserved.
+PureMVC AS3 Standard Framework
 --------------------------------------------------------------------------
 Release Date: 08/14/08
     Platform: ActionScript 3 (Flash, Flex, AIR)
@@ -6,7 +6,6 @@ Release Date: 08/14/08
     Revision: 0
        Minor: 4    
       Author: Cliff Hall <cliff@puremvc.org>
-     License: Creative Commons Attribution 3.0 United States License
 --------------------------------------------------------------------------
 2.0.4 Dissallowed re-registration of Mediators in View.registerMediator. 
       For more on this bug, see:
