@@ -10,7 +10,7 @@ package org.puremvc.as3.interfaces
 	 * <P>
 	 * In PureMVC, an <code>IController</code> implementor 
 	 * follows the 'Command and Controller' strategy, and 
-	 * assumes these responsibilities:
+	 * assumes these responsibilities:</P>
 	 * <UL>
 	 * <LI> Remembering which <code>ICommand</code>s 
 	 * are intended to handle which <code>INotifications</code>.</LI>

@@ -36,7 +36,7 @@ package org.puremvc.as3.patterns.observer
 	 * PureMVC <code>Notification</code>s follow a 'Publish/Subscribe'
 	 * pattern. PureMVC classes need not be related to each other in a 
 	 * parent/child relationship in order to communicate with one another
-	 * using <code>Notification</code>s.
+	 * using <code>Notification</code>s.</P>
 	 * 
 	 * @see org.puremvc.as3.patterns.observer.Observer Observer
 	 * 
