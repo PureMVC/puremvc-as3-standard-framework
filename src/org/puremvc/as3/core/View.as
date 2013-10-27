@@ -12,7 +12,7 @@ package org.puremvc.as3.core
 	 * A Singleton <code>IView</code> implementation.
 	 * 
 	 * <P>
-	 * In PureMVC, the <code>View</code> class assumes these responsibilities:
+	 * In PureMVC, the <code>View</code> class assumes these responsibilities:</P>
 	 * <UL>
 	 * <LI>Maintain a cache of <code>IMediator</code> instances.</LI>
 	 * <LI>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</LI>
@@ -37,7 +37,7 @@ package org.puremvc.as3.core
 		 * This <code>IView</code> implementation is a Singleton, 
 		 * so you should not call the constructor 
 		 * directly, but instead call the static Singleton 
-		 * Factory method <code>View.getInstance()</code>
+		 * Factory method <code>View.getInstance()</code></P>
 		 * 
 		 * @throws Error Error if Singleton instance has already been constructed
 		 * 
@@ -130,7 +130,7 @@ package org.puremvc.as3.core
 
 		/**
 		 * Remove the observer for a given notifyContext from an observer list for a given Notification name.
-		 * <P>
+		 * 
 		 * @param notificationName which observer list to remove from 
 		 * @param notifyContext remove the observer with this object as its notifyContext
 		 */
@@ -169,7 +169,7 @@ package org.puremvc.as3.core
 		 * names to be notified about, an <code>Observer</code> is created encapsulating 
 		 * the <code>IMediator</code> instance's <code>handleNotification</code> method 
 		 * and registering it as an <code>Observer</code> for all <code>INotifications</code> the 
-		 * <code>IMediator</code> is interested in.</p>
+		 * <code>IMediator</code> is interested in.</P>
 		 * 
 		 * @param mediatorName the name to associate with this <code>IMediator</code> instance
 		 * @param mediator a reference to the <code>IMediator</code> instance

@@ -14,21 +14,21 @@ package org.puremvc.as3.patterns.facade
 	 * 
 	 * <P>
 	 * In PureMVC, the <code>Facade</code> class assumes these 
-	 * responsibilities:
+	 * responsibilities:</P>
 	 * <UL>
 	 * <LI>Initializing the <code>Model</code>, <code>View</code>
 	 * and <code>Controller</code> Singletons.</LI> 
 	 * <LI>Providing all the methods defined by the <code>IModel, 
-	 * IView, & IController</code> interfaces.</LI>
+	 * IView, and IController</code> interfaces.</LI>
 	 * <LI>Providing the ability to override the specific <code>Model</code>,
 	 * <code>View</code> and <code>Controller</code> Singletons created.</LI> 
 	 * <LI>Providing a single point of contact to the application for 
 	 * registering <code>Commands</code> and notifying <code>Observers</code></LI>
 	 * </UL>
 	 * <P>
- 	 * Example usage:
+ 	 * Example usage:</P>
 	 * <listing>
-	 *	import org.puremvc.as3.patterns.facade.&lowast;;
+	 *	import org.puremvc.as3.patterns.facade.Facade;
 	 * 
 	 *	import com.me.myapp.model.~~;
 	 *	import com.me.myapp.view.~~;
@@ -136,7 +136,7 @@ package org.puremvc.as3.patterns.facade
 		 * This <code>IFacade</code> implementation is a Singleton, 
 		 * so you should not call the constructor 
 		 * directly, but instead call the static Singleton 
-		 * Factory method <code>Facade.getInstance()</code>
+		 * Factory method <code>Facade.getInstance()</code></P>
 		 * 
 		 * @throws Error Error if Singleton instance has already been constructed
 		 * 
@@ -177,15 +177,14 @@ package org.puremvc.as3.patterns.facade
 		 * <P>
 		 * Called by the <code>initializeFacade</code> method.
 		 * Override this method in your subclass of <code>Facade</code> 
-		 * if one or both of the following are true:
+		 * if one or both of the following are true:</P>
 		 * <UL>
 		 * <LI> You wish to initialize a different <code>IController</code>.</LI>
-		 * <LI> You have <code>Commands</code> to register with the <code>Controller</code> at startup.</code>. </LI>		  
+		 * <LI> You have <code>Commands</code> to register with the <code>Controller</code> at startup. </LI>
 		 * </UL>
 		 * If you don't want to initialize a different <code>IController</code>, 
 		 * call <code>super.initializeController()</code> at the beginning of your
 		 * method, then register <code>Command</code>s.
-		 * </P>
 		 */
 		protected function initializeController( ):void {
 			if ( controller != null ) return;
@@ -198,11 +197,11 @@ package org.puremvc.as3.patterns.facade
 		 * <P>
 		 * Called by the <code>initializeFacade</code> method.
 		 * Override this method in your subclass of <code>Facade</code> 
-		 * if one or both of the following are true:
+		 * if one or both of the following are true: </P>
 		 * <UL>
 		 * <LI> You wish to initialize a different <code>IModel</code>.</LI>
 		 * <LI> You have <code>Proxy</code>s to register with the Model that do not 
-		 * retrieve a reference to the Facade at construction time.</code></LI> 
+		 * retrieve a reference to the Facade at construction time.</LI> 
 		 * </UL>
 		 * If you don't want to initialize a different <code>IModel</code>, 
 		 * call <code>super.initializeModel()</code> at the beginning of your
@@ -227,7 +226,7 @@ package org.puremvc.as3.patterns.facade
 		 * <P>
 		 * Called by the <code>initializeFacade</code> method.
 		 * Override this method in your subclass of <code>Facade</code> 
-		 * if one or both of the following are true:
+		 * if one or both of the following are true:</P>
 		 * <UL>
 		 * <LI> You wish to initialize a different <code>IView</code>.</LI>
 		 * <LI> You have <code>Observers</code> to register with the <code>View</code></LI>
@@ -377,7 +376,7 @@ package org.puremvc.as3.patterns.facade
 		 * 
 		 * <P>
 		 * Keeps us from having to construct new notification 
-		 * instances in our implementation code.
+		 * instances in our implementation code. </P>
 		 * @param notificationName the name of the notiification to send
 		 * @param body the body of the notification (optional)
 		 * @param type the type of the notification (optional)
@@ -393,7 +392,7 @@ package org.puremvc.as3.patterns.facade
 		 * This method is left public mostly for backward 
 		 * compatibility, and to allow you to send custom 
 		 * notification classes using the facade.</P>
-		 *<P> 
+		 * <P> 
 		 * Usually you should just call sendNotification
 		 * and pass the parameters, never having to 
 		 * construct the notification yourself.</P>

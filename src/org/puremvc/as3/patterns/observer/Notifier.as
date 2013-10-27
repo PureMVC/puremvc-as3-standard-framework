@@ -12,7 +12,7 @@ package org.puremvc.as3.patterns.observer
 	 * 
 	 * <P>
 	 * <code>MacroCommand, Command, Mediator</code> and <code>Proxy</code> 
-	 * all have a need to send <code>Notifications</code>. <P>
+	 * all have a need to send <code>Notifications</code>. </P>
 	 * <P>
 	 * The <code>INotifier</code> interface provides a common method called
 	 * <code>sendNotification</code> that relieves implementation code of 
@@ -39,7 +39,7 @@ package org.puremvc.as3.patterns.observer
 		 * 
 		 * <P>
 		 * Keeps us from having to construct new INotification 
-		 * instances in our implementation code.
+		 * instances in our implementation code.</P>
 		 * @param notificationName the name of the notiification to send
 		 * @param body the body of the notification (optional)
 		 * @param type the type of the notification (optional)

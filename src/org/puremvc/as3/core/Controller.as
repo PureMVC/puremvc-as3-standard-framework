@@ -14,7 +14,7 @@ package org.puremvc.as3.core
 	 * <P>
 	 * In PureMVC, the <code>Controller</code> class follows the
 	 * 'Command and Controller' strategy, and assumes these 
-	 * responsibilities:
+	 * responsibilities:</P>
 	 * <UL>
 	 * <LI> Remembering which <code>ICommand</code>s 
 	 * are intended to handle which <code>INotifications</code>.</LI>
@@ -29,11 +29,11 @@ package org.puremvc.as3.core
 	 * 
 	 * <P>
 	 * Your application must register <code>ICommands</code> with the 
-	 * Controller.
+	 * Controller.</P>
 	 * <P>
- 	 * The simplest way is to subclass </code>Facade</code>, 
+ 	 * The simplest way is to subclass <code>Facade</code>, 
 	 * and use its <code>initializeController</code> method to add your 
-	 * registrations. 
+	 * registrations. </P>
 	 * 
 	 * @see org.puremvc.as3.core.view.View View
 	 * @see org.puremvc.as3.patterns.observer.Observer Observer
@@ -51,7 +51,7 @@ package org.puremvc.as3.core
 		 * This <code>IController</code> implementation is a Singleton, 
 		 * so you should not call the constructor 
 		 * directly, but instead call the static Singleton 
-		 * Factory method <code>Controller.getInstance()</code>
+		 * Factory method <code>Controller.getInstance()</code></P>
 		 * 
 		 * @throws Error Error if Singleton instance has already been constructed
 		 * 

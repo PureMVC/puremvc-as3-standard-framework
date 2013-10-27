@@ -21,7 +21,7 @@ package org.puremvc.as3.patterns.observer
 	 * <LI>Encapsulate the notification context (this) of the interested object.</LI>
 	 * <LI>Provide methods for setting the notification method and context.</LI>
 	 * <LI>Provide a method for notifying the interested object.</LI>
-	 * </UL>
+	 * </UL></P>
 	 * 
 	 * @see org.puremvc.as3.core.view.View View
 	 * @see org.puremvc.as3.patterns.observer.Notification Notification

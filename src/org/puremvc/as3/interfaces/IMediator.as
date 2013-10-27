@@ -24,7 +24,7 @@ package org.puremvc.as3.interfaces
 	 * <LI>In Flash-based apps, this is often the place where event listeners are
 	 * added to view components, and their handlers implemented.</LI>
 	 * <LI>Respond to and generate <code>INotifications</code>, interacting with of 
-	 * the rest of the PureMVC app.
+	 * the rest of the PureMVC app.</LI>
 	 * </UL></P>
 	 * <P>
 	 * When an <code>IMediator</code> is registered with the <code>IView</code>, 
