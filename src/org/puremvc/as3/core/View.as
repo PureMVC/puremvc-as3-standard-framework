@@ -123,6 +123,11 @@ package org.puremvc.as3.core
 				// Notify Observers from the working array				
 				for (i = 0; i < observers.length; i++) {
 					observer = observers[ i ] as IObserver;
+					
+					// Check if the next Observer to be notified is removed
+					// during the notification loop
+					if( observers_ref.indexOf(observer) < 0 ) continue;
+					
 					observer.notifyObserver( notification );
 				}
 			}
