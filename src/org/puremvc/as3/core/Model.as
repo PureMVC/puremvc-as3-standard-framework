@@ -12,7 +12,7 @@ package org.puremvc.as3.core
 	 * 
 	 * <P>
 	 * In PureMVC, the <code>Model</code> class provides
-	 * access to model objects (Proxies) by named lookup. 
+	 * access to model objects (Proxies) by named lookup. </P>
 	 * 
 	 * <P>
 	 * The <code>Model</code> assumes these responsibilities:</P>
@@ -28,7 +28,7 @@ package org.puremvc.as3.core
 	 * with the <code>Model</code>. Typically, you use an 
 	 * <code>ICommand</code> to create and register <code>IProxy</code> 
 	 * instances once the <code>Facade</code> has initialized the Core 
-	 * actors.</p>
+	 * actors.</P>
 	 *
 	 * @see org.puremvc.as3.patterns.proxy.Proxy Proxy
 	 * @see org.puremvc.as3.interfaces.IProxy IProxy
@@ -42,7 +42,7 @@ package org.puremvc.as3.core
 		 * This <code>IModel</code> implementation is a Singleton, 
 		 * so you should not call the constructor 
 		 * directly, but instead call the static Singleton 
-		 * Factory method <code>Model.getInstance()</code>
+		 * Factory method <code>Model.getInstance()</code></P>
 		 * 
 		 * @throws Error Error if Singleton instance has already been constructed
 		 * 

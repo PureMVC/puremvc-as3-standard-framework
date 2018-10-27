@@ -12,7 +12,7 @@ package org.puremvc.as3.interfaces
 	 * In PureMVC, <code>IView</code> implementors assume these responsibilities:</P>
 	 * 
 	 * <P>
-	 * In PureMVC, the <code>View</code> class assumes these responsibilities:
+	 * In PureMVC, the <code>View</code> class assumes these responsibilities:</P>
 	 * <UL>
 	 * <LI>Maintain a cache of <code>IMediator</code> instances.</LI>
 	 * <LI>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</LI>
@@ -40,7 +40,7 @@ package org.puremvc.as3.interfaces
 
 		/**
 		 * Remove a group of observers from the observer list for a given Notification name.
-		 * <P>
+		 * 
 		 * @param notificationName which observer list to remove from 
 		 * @param notifyContext removed the observers with this object as their notifyContext
 		 */
@@ -70,7 +70,7 @@ package org.puremvc.as3.interfaces
 		 * names to be notified about, an <code>Observer</code> is created encapsulating 
 		 * the <code>IMediator</code> instance's <code>handleNotification</code> method 
 		 * and registering it as an <code>Observer</code> for all <code>INotifications</code> the 
-		 * <code>IMediator</code> is interested in.</p>
+		 * <code>IMediator</code> is interested in.</P>
 		 * 
 		 * @param mediatorName the name to associate with this <code>IMediator</code> instance
 		 * @param mediator a reference to the <code>IMediator</code> instance

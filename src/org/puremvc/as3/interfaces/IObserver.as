@@ -9,7 +9,7 @@ package org.puremvc.as3.interfaces
 	 * The interface definition for a PureMVC Observer.
 	 *
 	 * <P>
-	 * In PureMVC, <code>IObserver</code> implementors assume these responsibilities:
+	 * In PureMVC, <code>IObserver</code> implementors assume these responsibilities:</P>
 	 * <UL>
 	 * <LI>Encapsulate the notification (callback) method of the interested object.</LI>
 	 * <LI>Encapsulate the notification context (this) of the interested object.</LI>
@@ -32,8 +32,8 @@ package org.puremvc.as3.interfaces
 	 * <P> 
 	 * An Observer is an object that encapsulates information
 	 * about an interested object with a notification method that
-	 * should be called when an </code>INotification</code> is broadcast. The Observer then
-	 * acts as a proxy for notifying the interested object.
+	 * should be called when an <code>INotification</code> is broadcast. The Observer then
+	 * acts as a proxy for notifying the interested object.</P>
 	 * 
 	 * <P>
 	 * Observers can receive <code>Notification</code>s by having their
