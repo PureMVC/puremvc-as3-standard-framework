@@ -1,7 +1,7 @@
 ## [PureMVC](http://puremvc.github.com/) ActionScript 3 Standard Framework
 PureMVC is a lightweight framework for creating applications based upon the classic [Model-View-Controller](http://en.wikipedia.org/wiki/Model-view-controller) design meta-pattern. This is the specific implementation for the AS3 language, and the reference implementation for [all other PureMVC Ports](http://puremvc.github.com/). It does not support [modular programming](http://en.wikipedia.org/wiki/Modular_programming) since it uses [Singleton](http://en.wikipedia.org/wiki/Singleton_pattern)s as Core actors rather than the [Multiton](http://en.wikipedia.org/wiki/Multiton)s used in the [MultiCore](https://github.com/PureMVC/puremvc-as3-multicore-framework/wiki/) Version.
 
-* [API Docs](http://darkstar.puremvc.org/content_header.html?url=http://puremvc.org/pages/docs/AS3/standard/framework_asdoc/&desc=PureMVC%20API%20Docs:%20PureMVC%20Standard%20for%20ActionScript%203)
+* [API Docs](http://puremvc.org/pages/docs/AS3/standard/framework_asdoc/)
 * [Unit Tests](https://github.com/PureMVC/puremvc-as3-standard-unittests/wiki)
 * [Discussion](http://forums.puremvc.org/index.php?board=26.0)
 * [Standard Version Overview Presentation](http://puremvc.tv/#P100)
